@@ -1,16 +1,25 @@
 # Xiaomi SM8550 platform configuration
 
-Shared by `fuxi` and `sheng`.
+Shared platform configuration for `fuxi` and `sheng` in one AOSPA source tree.
+Device-specific configuration, kernels and proprietary inputs remain in their
+respective device and vendor directories.
 
-- `BoardConfigCommon.mk`: architecture, boot image format, common AVB settings,
-  recovery, WLAN and shared policy search paths.
-- `common.mk`: common product packages, permissions and platform defaults.
-- `configs/`: identical audio policy, hotword permissions and framework matrix.
-- `sepolicy/`: rules shared by both device variants.
+## Build
 
-Each variant sets `SM8550_VARIANT_PATH` before including these files. Its own
-configuration keeps partition sizes, init implementation, sensor capabilities,
-firmware-dependent settings, feature packages and proprietary inputs.
+From the populated Android source root:
 
-The platform layer is checked out at `device/xiaomi/sm8550-platform-common`
-in both source trees. Changes are maintained together in this repository.
+```sh
+bash build-device.sh fuxi user -j32 target-files-package
+bash build-device.sh sheng userdebug -j32 target-files-package
+```
+
+| Product | Output directory |
+| --- | --- |
+| fuxi user | `out-user-release` |
+| fuxi userdebug | `out` |
+| sheng user | `out-sheng-user` |
+| sheng userdebug | `out-sheng-userdebug` |
+
+`build-device.sh` selects `cp2a` and calls the platform build directly.
+`build/release` contains the common Bluetooth and window lifecycle flags.
+Each device supplies its own kernel capability flags.
