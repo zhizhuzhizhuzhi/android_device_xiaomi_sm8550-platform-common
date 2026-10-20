@@ -16,6 +16,7 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-6144-dalvik-heap.mk)
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(SM8550_VARIANT_PATH) \
+    device/xiaomi/sm8550-platform-common \
     hardware/xiaomi
 
 # AAPT
@@ -157,3 +158,5 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.ipsec_tunnels.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.ipsec_tunnels.xml
 
+
+PRODUCT_RELEASE_CONFIG_MAPS += device/xiaomi/sm8550-platform-common/build/release/release_config_map.textproto
