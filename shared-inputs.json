@@ -1,0 +1,37 @@
+{
+  "files": [
+    {
+      "destination": "device/xiaomi/sm8550-platform-common/qspm-v2/snapdragon_services",
+      "sha256": "a0b5d7f699e3ae2796f2697f90388ecb26fbbda1b9dd6ae14395b8f3ce49316e",
+      "bytes": 154704,
+      "mode": 436,
+      "sources": [
+        "device/xiaomi/sm8550-common/qspm-v2/snapdragon_services",
+        "device/xiaomi/sm8550-sheng-common/qspm-v2/snapdragon_services",
+        "proprietary/vendor/bin/snapdragon_services"
+      ]
+    },
+    {
+      "destination": "device/xiaomi/sm8550-platform-common/qspm-v2/vendor.qti.qesdsys-V4-ndk.so",
+      "sha256": "67f78d434d7ffeaae7329f89657187ad10ebbe793ec75a1307a25108b10bbcc6",
+      "bytes": 102856,
+      "mode": 436,
+      "sources": [
+        "device/xiaomi/sm8550-common/qspm-v2/vendor.qti.qesdsys-V4-ndk.so",
+        "device/xiaomi/sm8550-sheng-common/qspm-v2/vendor.qti.qesdsys-V4-ndk.so",
+        "proprietary/vendor/lib64/vendor.qti.qesdsys-V4-ndk.so"
+      ]
+    },
+    {
+      "destination": "device/xiaomi/sm8550-platform-common/qspm-v2/vendor.qti.snapdragonServices-V2-ndk.so",
+      "sha256": "5bc634eb3923bb4f549f9d42a394954abca318034e153625fb0d92428c8a2d60",
+      "bytes": 85760,
+      "mode": 436,
+      "sources": [
+        "device/xiaomi/sm8550-common/qspm-v2/vendor.qti.snapdragonServices-V2-ndk.so",
+        "device/xiaomi/sm8550-sheng-common/qspm-v2/vendor.qti.snapdragonServices-V2-ndk.so",
+        "proprietary/vendor/lib64/vendor.qti.snapdragonServices-V2-ndk.so"
+      ]
+    }
+  ]
+}

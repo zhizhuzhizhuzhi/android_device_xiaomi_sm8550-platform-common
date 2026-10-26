@@ -1,0 +1,4 @@
+/qspm-v2/snapdragon_services
+/qspm-v2/*.so
+__pycache__/
+*.pyc

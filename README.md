@@ -23,3 +23,12 @@ bash build-device.sh sheng userdebug -j32 target-files-package
 `build-device.sh` selects `cp2a` and calls the platform build directly.
 `build/release` contains the common Bluetooth and window lifecycle flags.
 Each device supplies its own kernel capability flags.
+
+`OUT_DIR` may select another relative output directory. Fuxi's source kernel
+and prepared module/header tree live inside that output, independently of
+other builds. Sheng continues to use its extracted prebuilt kernel.
+
+`tools/extract-device-inputs.py` is the shared hash-pinned input validator;
+device entry points supply their own manifest. `shared-inputs.json` holds the
+common QSPM inputs and `qspm-v2/` records their upstream provenance. Closed
+binary inputs are extracted locally rather than committed here.
