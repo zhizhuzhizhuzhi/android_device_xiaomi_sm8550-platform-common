@@ -7,8 +7,8 @@ contains the common build flags, permissions, audio policy and input tooling.
 ## Checkout and preparation
 
 Use the pinned manifests in [android_local_manifests](https://github.com/zhizhuzhizhuzhi/android_local_manifests).
-The source preparation commands and binary prerequisites are documented in the
-separate [integration repository](https://github.com/zhizhuzhizhuzhi/android_vendor_xiaomi_sm8550-integration).
+The manifests directly pin each modified source project. Binary prerequisites
+and extraction commands are documented in the selected device repository.
 
 ## Build
 
