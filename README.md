@@ -1,34 +1,40 @@
 # Xiaomi SM8550 platform configuration
 
-Shared platform configuration for `fuxi` and `sheng` in one AOSPA source tree.
-Device-specific configuration, kernels and proprietary inputs remain in their
-respective device and vendor directories.
+Shared AOSPA Calcite configuration for Xiaomi 13 (`fuxi`) and Pad 6S Pro (`sheng`).
+Device and device-family configuration live in their own repositories. This tree
+contains the common build flags, permissions, audio policy and input tooling.
+
+## Checkout and preparation
+
+Use the pinned manifests in [android_local_manifests](https://github.com/zhizhuzhizhuzhi/android_local_manifests).
+The source preparation commands and binary prerequisites are documented in the
+separate [integration repository](https://github.com/zhizhuzhizhuzhi/android_vendor_xiaomi_sm8550-integration).
 
 ## Build
 
-From the populated Android source root:
+From the prepared Android root, use the same entry for either product:
 
 ```sh
-bash build-device.sh fuxi user -j32 target-files-package
-bash build-device.sh sheng userdebug -j32 target-files-package
+bash build-device.sh fuxi user -j8 target-files-package
+bash build-device.sh sheng userdebug -j8 target-files-package
 ```
 
-| Product | Output directory |
+| Product | Default output |
 | --- | --- |
-| fuxi user | `out-user-release` |
-| fuxi userdebug | `out` |
-| sheng user | `out-sheng-user` |
-| sheng userdebug | `out-sheng-userdebug` |
+| fuxi user | out-user-release |
+| fuxi userdebug | out |
+| sheng user | out-sheng-user |
+| sheng userdebug | out-sheng-userdebug |
 
-`build-device.sh` selects `cp2a` and calls the platform build directly.
-`build/release` contains the common Bluetooth and window lifecycle flags.
-Each device supplies its own kernel capability flags.
+The wrapper selects `aospa_<device>`, release `cp2a`, and the requested variant.
+It uses the checked-in AOSPA environment and prepares the Fuxi source kernel before
+Android compilation. It does not sync repositories, fetch dependencies or apply
+source patches. Do not replace it with a plain `m` command before preparing the
+Fuxi kernel. `OUT_DIR` accepts another checkout-relative directory.
 
-`OUT_DIR` may select another relative output directory. Fuxi's source kernel
-and prepared module/header tree live inside that output, independently of
-other builds. Sheng continues to use its extracted prebuilt kernel.
+`BUILD_NUMBER` is optional and supplied by the caller for reproducible releases;
+there is no hard-coded release date. Android chooses its default when unset.
+The wrapper takes a nonblocking per-device build lock, with no polling/retry loop.
 
-`tools/extract-device-inputs.py` is the shared hash-pinned input validator;
-device entry points supply their own manifest. `shared-inputs.json` holds the
-common QSPM inputs and `qspm-v2/` records their upstream provenance. Closed
-binary inputs are extracted locally rather than committed here.
+`tools/extract-device-inputs.py` validates the per-device input manifests and
+`shared-inputs.json`. Closed binaries and signing keys are not stored here.

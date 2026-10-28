@@ -20,7 +20,7 @@ flock -n 9
 export OUT_DIR="$out"
 export TARGET_PRODUCT="aospa_$device" TARGET_RELEASE=cp2a TARGET_BUILD_VARIANT="$variant"
 export AOSPA_BUILD="$device" BUILD_USERNAME=nobody BUILD_HOSTNAME=android-build
-export BUILD_NUMBER=${BUILD_NUMBER:-20261020}
+# BUILD_NUMBER is supplied by release automation or Android build defaults.
 source build/envsetup.sh
 set_stuff_for_environment
 if [ "$device" = fuxi ]; then
