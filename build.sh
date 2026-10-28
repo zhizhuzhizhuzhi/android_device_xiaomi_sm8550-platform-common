@@ -22,7 +22,7 @@ export TARGET_PRODUCT="aospa_$device" TARGET_RELEASE=cp2a TARGET_BUILD_VARIANT="
 export AOSPA_BUILD="$device" BUILD_USERNAME=nobody BUILD_HOSTNAME=android-build
 # BUILD_NUMBER is supplied by release automation or Android build defaults.
 source build/envsetup.sh
-set_stuff_for_environment
+lunch "$TARGET_PRODUCT" "$TARGET_RELEASE" "$TARGET_BUILD_VARIANT"
 if [ "$device" = fuxi ]; then
     # Qualcomm's Android module rules consume this directory. Keep a separate
     # prepared kernel for each Android output instead of writing a shared tree.
