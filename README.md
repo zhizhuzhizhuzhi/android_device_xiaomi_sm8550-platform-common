@@ -7,8 +7,19 @@ contains the common build flags, permissions, audio policy and input tooling.
 ## Checkout and preparation
 
 Use the pinned manifests in [android_local_manifests](https://github.com/zhizhuzhizhuzhi/android_local_manifests).
-The manifests directly pin each modified source project. Binary prerequisites
-and extraction commands are documented in the selected device repository.
+The manifests pin upstream source bases and the existing shared integration
+repository. Binary prerequisites and extraction commands are documented in the
+selected device repository. After extraction, prepare the selected product
+through the same integration entry before running the build wrapper:
+
+```sh
+python3 vendor/xiaomi/sm8550-integration/tools/prepare-source.py --tree "$PWD" --device sheng --check
+python3 vendor/xiaomi/sm8550-integration/tools/prepare-source.py --tree "$PWD" --device sheng
+```
+
+Use `--device fuxi` for Fuxi. Sheng selects a self-contained tablet profile;
+Fuxi retains the legacy shared-plus-phone profile. Individual source forks are
+not required by this integrated layout.
 
 ## Build
 
